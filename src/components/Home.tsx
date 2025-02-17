@@ -9,7 +9,7 @@ const Home = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/src/assets/foto-perfil.jpg')",
+          backgroundImage: "url('/assets/foto-perfil.jpg')", // Cambiado a /assets/
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -31,7 +31,7 @@ const Home = () => {
             <div className="flex items-center justify-center gap-6 mb-8">
               <Code size={48} className="text-red-500" />
               <motion.img
-                src="/src/assets/Pombo.png"
+                src="/assets/Pombo.png" 
                 alt="Logo Pombo"
                 className="w-16 h-16"
                 animate={{

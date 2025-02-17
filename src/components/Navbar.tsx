@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2">
             <motion.img
-              src="/src/assets/Pombo.png"
+              src="assets/Pombo.png"
               alt="Logo Pombo"
               className="w-8 h-8"
               whileHover={{ scale: 1.1 }}
