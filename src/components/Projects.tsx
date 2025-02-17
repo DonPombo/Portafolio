@@ -7,7 +7,7 @@ const Projects = () => {
       title: "Un Lugar Chido",
       description:
         "Aplicación móvil para mostrar el catálogo de productos del restaurante ULC, con un panel de administracion para realizar todas las funciones necesarias con los productos.",
-      image: "src/assets/ulc.png",
+      image: "assets/ULC.png",
       tags: ["Flutter", "Supabase", "Restaurante", "Administración"],
       githubUrl: "https://github.com/DonPombo/Un-Lugar-Chido",
     },
