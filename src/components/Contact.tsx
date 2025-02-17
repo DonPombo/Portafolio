@@ -1,18 +1,42 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader } from "lucide-react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    user_name: "",
+    user_email: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsLoading(true);
+    setIsSuccess(false);
+    setIsError(false);
+
+    emailjs
+      .send(
+        "service_dts8pjv", // Replace with your EmailJS service ID
+        "template_peiqkrb", // Replace with your EmailJS template ID
+        formData,
+        "Od9vr6I153CUrSqM6" // Replace with your EmailJS public key
+      )
+      .then((response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        setIsLoading(false);
+        setIsSuccess(true);
+        setFormData({ user_name: "", user_email: "", message: "" });
+      })
+      .catch((err) => {
+        console.error("FAILED...", err);
+        setIsLoading(false);
+        setIsError(true);
+      });
   };
 
   const handleChange = (
@@ -59,16 +83,16 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label
-                    htmlFor="name"
+                    htmlFor="user_name"
                     className="block text-sm font-medium text-gray-300 mb-1"
                   >
                     Nombre
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="user_name"
+                    name="user_name"
+                    value={formData.user_name}
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
@@ -76,16 +100,16 @@ const Contact = () => {
                 </div>
                 <div>
                   <label
-                    htmlFor="email"
+                    htmlFor="user_email"
                     className="block text-sm font-medium text-gray-300 mb-1"
                   >
                     Correo Electrónico
                   </label>
                   <input
                     type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                    id="user_email"
+                    name="user_email"
+                    value={formData.user_email}
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
@@ -111,10 +135,28 @@ const Contact = () => {
                 <button
                   type="submit"
                   className="btn-primary w-full flex items-center justify-center gap-2"
+                  disabled={isLoading}
                 >
-                  Enviar Mensaje <Send size={20} />
+                  {isLoading ? (
+                    <Loader className="animate-spin" size={20} />
+                  ) : (
+                    <>
+                      Enviar Mensaje <Send size={20} />
+                    </>
+                  )}
                 </button>
               </form>
+              {isSuccess && (
+                <p className="text-green-500 mt-4">
+                  Mensaje enviado con éxito!
+                </p>
+              )}
+              {isError && (
+                <p className="text-red-500 mt-4">
+                  Hubo un error al enviar el mensaje. Por favor, inténtalo de
+                  nuevo.
+                </p>
+              )}
             </div>
           </div>
         </motion.div>
