@@ -1,5 +1,4 @@
-import React from 'react';
-import { Github, Linkedin, Youtube, Twitter } from 'lucide-react';
+import { Github, Linkedin, Youtube, Twitter, } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -16,7 +15,7 @@ const Footer = () => {
               <Github size={24} />
             </a>
             <a
-              href="https://linkedin.com/in/donpombo"
+              href="https://www.linkedin.com/in/alejandro-pombo-445bb2328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"
@@ -32,7 +31,7 @@ const Footer = () => {
               <Youtube size={24} />
             </a>
             <a
-              href="https://twitter.com/donpombo"
+              href="https://twitter.com/AledonPombo"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"

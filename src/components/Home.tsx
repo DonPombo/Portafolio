@@ -31,7 +31,7 @@ const Home = () => {
             <div className="flex items-center justify-center gap-6 mb-8">
               <Code size={48} className="text-red-500" />
               <motion.img
-                src="/assets/Pombo.png" 
+                src="/assets/Pombo.png"
                 alt="Logo Pombo"
                 className="w-16 h-16"
                 animate={{

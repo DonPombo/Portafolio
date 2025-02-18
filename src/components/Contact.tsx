@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Loader } from "lucide-react";
+import { Mail, /*Phone,*/ MapPin, Send, Loader } from "lucide-react";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
@@ -48,6 +48,12 @@ const Contact = () => {
     });
   };
 
+  // Mostrar numero de telefono
+  /* <div className="flex items-center gap-4">
+    <Phone className="text-red-500" />
+    <span className="text-gray-300">+53 </span>
+  </div>;*/
+
   return (
     <div className="min-h-screen pt-20 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,10 +74,7 @@ const Contact = () => {
                   <Mail className="text-red-500" />
                   <span className="text-gray-300">donpombo31@gmail.com</span>
                 </div>
-                <div className="flex items-center gap-4">
-                  <Phone className="text-red-500" />
-                  <span className="text-gray-300">+53 5588 3321</span>
-                </div>
+
                 <div className="flex items-center gap-4">
                   <MapPin className="text-red-500" />
                   <span className="text-gray-300">La Habana, Cuba</span>
